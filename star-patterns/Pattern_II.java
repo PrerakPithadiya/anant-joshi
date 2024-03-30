@@ -2,7 +2,7 @@ package Patterns.Star_Patterns;
 
 import java.util.Scanner;
 
-public class Pattern_I {
+public class Pattern_II {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -12,6 +12,10 @@ public class Pattern_I {
 
         // Loop for each row
         for (int i = 1; i <= n; i++) {
+            // Loop for printing spaces before stars
+            for (int j = 1; j <= n - i; j++) {
+                System.out.print(" "); // Printing spaces
+            }
             // Loop for printing stars in each row
             for (int j = 1; j <= i; j++) {
                 System.out.print("* "); // Printing a star followed by a space
