@@ -1,6 +1,5 @@
 package anant_joshi;
 
-import java.util.Random;
 import java.util.Scanner;
 
 class Student {
@@ -11,27 +10,27 @@ class Student {
     String result;
 }
 
-public class Student_Record {
+public class Student_Management_System {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter the Number of Students : ");
-        int nost = sc.nextInt();
+        int numOfStudent = sc.nextInt();
 
         System.out.print("Enter the Number of Subjects : ");
-        int nos = sc.nextInt();
+        int numOfSubject = sc.nextInt();
         System.out.println();
 
-        Student[] arr = new Student[nost];
-        int[][] marks = new int[nost][nos];
-        String[] names = new String[nost];
+        Student[] arr = new Student[numOfStudent];
+        int[][] marks = new int[numOfStudent][numOfSubject];
+        String[] names = new String[numOfStudent];
         double maxPercent = 0;
         int roll = 0, passed = 0;
 
-        for (int i = 0; i < nost; i++) {
+        for (int i = 0; i < numOfStudent; i++) {
             System.out.print("Enter Student " + (i + 1) + " Name : ");
             names[i] = sc.next();
-            for (int j = 0; j < nos; j++) {
+            for (int j = 0; j < numOfSubject; j++) {
                 System.out.print("Enter Student " + (i + 1) + " SUB " + (j + 1) + " Marks : ");
                 marks[i][j] = sc.nextInt();
             }
@@ -42,16 +41,15 @@ public class Student_Record {
             arr[i] = new Student();
             arr[i].roll = i + 1;
             arr[i].name = names[i];
-            // setRandomMarks(marks, i);
             arr[i].total = calcTotalMarks(marks[i]);
-            arr[i].percent = calcPercentage(arr[i].total, nos * 100);
-            arr[i].result = calcResult(arr[i].total, nos * 40);
+            arr[i].percent = calcPercentage(arr[i].total, numOfSubject * 100);
+            arr[i].result = calcResult(arr[i].total, numOfSubject * 40);
         }
 
         System.out.println("\n                  ** Student Record **");
 
         System.out.print("\nRoll No     Name    ");
-        for (int i = 1; i <= nos; i++) {
+        for (int i = 1; i <= numOfSubject; i++) {
             System.out.print("SUB" + i + "     ");
         }
         System.out.println("Total     Per     Result");
@@ -105,26 +103,9 @@ public class Student_Record {
             }
         }
 
-        System.out.println("\n\nTotal Students: " + nost);
+        System.out.println("\n\nTotal Students: " + numOfStudent);
         System.out.println("Pass: " + passed);
-        System.out.println("Fail: " + (nost - passed));
-    }
-
-    public static String setRandomName() {
-        String str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        StringBuilder sb = new StringBuilder();
-        Random rd = new Random();
-        for (int i = 1; i <= 3; i++) {
-            sb.append(str.charAt(rd.nextInt(str.length())));
-        }
-        return sb.toString();
-    }
-
-    public static void setRandomMarks(int[][] marks, int i) {
-        Random rd = new Random();
-        for (int j = 0; j < marks[0].length; j++) {
-            marks[i][j] = rd.nextInt(10, 100);
-        }
+        System.out.println("Fail: " + (numOfStudent - passed));
     }
 
     public static int calcTotalMarks(int[] marks) {
