@@ -12,11 +12,7 @@ public class Alphabetical_Pyramid {
 
         int a = 1;
         boolean isUpper;
-        if ('A' <= ch && ch <= 'Z') {
-            isUpper = true;
-        } else {
-            isUpper = false;
-        }
+        isUpper = 'A' <= ch && ch <= 'Z';
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= n - i; j++) {
                 System.out.print(" ");
@@ -35,7 +31,7 @@ public class Alphabetical_Pyramid {
                 } else if (a == 6) {
                     System.out.print("\033[0;36m" + ch++ + " ");
                 } else {
-                    System.out.print("\033[0;37m" + ch++ + " ");
+                    System.out.print("\033[0;29m" + ch++ + " ");
                 }
                 a++;
                 if (a > 7) {
